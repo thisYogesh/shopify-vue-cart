@@ -1,0 +1,39 @@
+{
+  "name": "vue-cart",
+  "version": "1.0.0",
+  "description": "vue-cart shopify component",
+  "main": "main.js",
+  "author": "Alex Asche",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "axios": "^0.17.0",
+    "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "eslint": "^4.9.0",
+    "http-server": "0.9.0",
+    "npm-run-all": "2.3.0",
+    "style-loader": "^0.23.0",
+    "vue-loader": "^15.4.2",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^3.8.1",
+    "webpack-config-utils": "^2.3.0",
+    "webpack-dev-server": "^2.9.3"
+  },
+  "scripts": {
+    "prebuild": "rm -rf dist",
+    "build": "webpack --env.prod -p",
+    "prebuild:dev": "rm -rf dist",
+    "dev": "webpack --env.dev",
+    "start": "http-server",
+    "validate": "npm-run-all --parallel lint build",
+    "lint": "eslint ."
+  }
+}

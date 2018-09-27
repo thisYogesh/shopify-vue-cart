@@ -1,0 +1,6 @@
+config.yml
+config
+theme.lock
+node_modules/
+yarn-error.log
+tasks
