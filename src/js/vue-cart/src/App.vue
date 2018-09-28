@@ -1,7 +1,7 @@
 <template>
     <div class="c-vueCart">
         <button class="c-vueCart__open" @click="toggleDrawer">
-            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-cart" viewBox="0 0 31 32"><path d="M14.568 25.629c-1.222 0-2.111.889-2.111 2.111 0 1.111 1 2.111 2.111 2.111 1.222 0 2.111-.889 2.111-2.111s-.889-2.111-2.111-2.111zm10.22 0c-1.222 0-2.111.889-2.111 2.111 0 1.111 1 2.111 2.111 2.111 1.222 0 2.111-.889 2.111-2.111s-.889-2.111-2.111-2.111zm2.555-3.777H12.457L7.347 7.078c-.222-.333-.555-.667-1-.667H1.792c-.667 0-1.111.444-1.111 1s.444 1 1.111 1h3.777l5.11 14.885c.111.444.555.666 1 .666h15.663c.555 0 1.111-.444 1.111-1 0-.666-.555-1.111-1.111-1.111zm2.333-11.442l-18.44-1.555h-.111c-.555 0-.777.333-.667.889l3.222 9.22c.222.555.889 1 1.444 1h13.441c.555 0 1.111-.444 1.222-1l.778-7.443c.111-.555-.333-1.111-.889-1.111zm-2 7.443H15.568l-2.333-6.776 15.108 1.222-.666 5.554z"/></svg>
+            <svg aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 31 32"><path d="M14.568 25.629c-1.222 0-2.111.889-2.111 2.111 0 1.111 1 2.111 2.111 2.111 1.222 0 2.111-.889 2.111-2.111s-.889-2.111-2.111-2.111zm10.22 0c-1.222 0-2.111.889-2.111 2.111 0 1.111 1 2.111 2.111 2.111 1.222 0 2.111-.889 2.111-2.111s-.889-2.111-2.111-2.111zm2.555-3.777H12.457L7.347 7.078c-.222-.333-.555-.667-1-.667H1.792c-.667 0-1.111.444-1.111 1s.444 1 1.111 1h3.777l5.11 14.885c.111.444.555.666 1 .666h15.663c.555 0 1.111-.444 1.111-1 0-.666-.555-1.111-1.111-1.111zm2.333-11.442l-18.44-1.555h-.111c-.555 0-.777.333-.667.889l3.222 9.22c.222.555.889 1 1.444 1h13.441c.555 0 1.111-.444 1.222-1l.778-7.443c.111-.555-.333-1.111-.889-1.111zm-2 7.443H15.568l-2.333-6.776 15.108 1.222-.666 5.554z"/></svg>
         </button>
         <Drawer 
             @drawerClosed="toggleDrawer"
@@ -12,6 +12,7 @@
 
 <script>
 import Drawer from './components/Drawer.vue';
+import { mapActions } from 'vuex'
 
 export default {
     name: 'App',
@@ -26,19 +27,26 @@ export default {
     methods: {
         toggleDrawer() {
             this.isOpen = !this.isOpen
-        }
+        },
+        ...mapActions([
+            'initCart',
+        ]),   
+    },
+    mounted() {
+        this.initCart()
     }
+
 }
 </script>
 
-<style>
-    .c-vueCart button {
+<style scoped>
+    .c-vueCart__open {
         border: none;
         outline: none;
         background: transparent;
-        padding: 10px;
-    }
-    .c-vueCart__open {
+        height: 32px;
+        width: 32px;
+        padding: 5px;
         color: white;
     }
     .c-vueCart__open svg {
