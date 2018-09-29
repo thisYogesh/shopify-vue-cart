@@ -58,6 +58,8 @@ gulp.task('watch', function() {
 });
 ```
 
+#### ADD liquid instructions
+
 # Development
 
 Run following commands in separate terminals tabs
