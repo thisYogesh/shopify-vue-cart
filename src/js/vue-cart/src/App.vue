@@ -11,46 +11,43 @@
 </template>
 
 <script>
-import Drawer from './components/Drawer.vue';
-import { mapActions } from 'vuex'
+import Drawer from "./components/Drawer.vue";
+import { mapActions } from "vuex";
 
 export default {
-    name: 'App',
-    components: {
-        Drawer
+  name: "App",
+  components: {
+    Drawer
+  },
+  data() {
+    return {
+      isOpen: false
+    };
+  },
+  methods: {
+    toggleDrawer() {
+      console.log("yoopopp");
+      this.isOpen = !this.isOpen;
     },
-    data() {
-        return {
-            isOpen: false
-        }
-    },
-    methods: {
-        toggleDrawer() {
-            console.log('yoopopp')
-            this.isOpen = !this.isOpen
-        },
-        ...mapActions([
-            'initCart',
-        ]),   
-    },
-    mounted() {
-        this.initCart()
-    }
-
-}
+    ...mapActions(["initCart"])
+  },
+  mounted() {
+    this.initCart();
+  }
+};
 </script>
 
 <style scoped>
-    .c-vueCart__open {
-        border: none;
-        outline: none;
-        background: transparent;
-        height: 32px;
-        width: 32px;
-        padding: 5px;
-        color: white;
-    }
-    .c-vueCart__open svg {
-        fill: white;
-    }
+.c-vueCart__open {
+  border: none;
+  outline: none;
+  background: transparent;
+  height: 32px;
+  width: 32px;
+  padding: 5px;
+  color: white;
+}
+.c-vueCart__open svg {
+  fill: white;
+}
 </style>

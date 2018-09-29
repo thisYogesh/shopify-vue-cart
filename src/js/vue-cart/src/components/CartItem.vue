@@ -36,68 +36,71 @@
 </template>
 
 <script>
-    import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
-    export default {
-        name: 'CartItem',
-        props: {
-            item: {
-                type: Object,
-                required: true
-            }
-        },
-        methods: {
-            ...mapActions([
-                'updateQty'
-            ])
-        }
+export default {
+  name: "CartItem",
+  props: {
+    item: {
+      type: Object,
+      required: true
     }
+  },
+  methods: {
+    ...mapActions(["updateQty"])
+  }
+};
 </script>
 
-<style scoped>
-    .fade-enter-active, .fade-leave-active {
-    transition: opacity 0s;
-    }
-    .fade-enter, .fade-leave-to {
-    opacity: 0;
-    }
-    .c-vueCartItem {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        padding: 15px;
-        margin-bottom: 20px;
-        border-radius: 3px;
-        background-color: #eee;
-    }
-    .c-vueCartItem__header {
-        display: flex;
-        margin-bottom: 10px;
-    }
-    .c-vueCartItem__title {
-        font-weight: 500;
-        flex-grow: 1;
-        max-width: calc(100% - 32px);
-        padding-right: 5px;
-    }
-    .c-vueCartItem__variant {
-        font-size: 14px;
-        display: block;
-    }
-    .c-vueCartItem__clear {
-        width: 32px;
-        height: 32px;
-        padding: 5px;
-    }
-    .c-vueCartItem__content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .c-vueCartItem__image {
-        height: 75px;
-    }
-    .c-vueCartItem__control {
-        margin: 4px;
-    }
+<style scoped lang="css">
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+  & > div {
+    color: red;
+  }
+}
+.c-vueCartItem {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  background-color: #eee;
+}
+.c-vueCartItem__header {
+  display: flex;
+  margin-bottom: 10px;
+}
+.c-vueCartItem__title {
+  font-weight: 500;
+  flex-grow: 1;
+  max-width: calc(100% - 32px);
+  padding-right: 5px;
+}
+.c-vueCartItem__variant {
+  font-size: 14px;
+  display: block;
+}
+.c-vueCartItem__clear {
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+}
+.c-vueCartItem__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.c-vueCartItem__image {
+  height: 75px;
+}
+.c-vueCartItem__control {
+  margin: 4px;
+}
 </style>

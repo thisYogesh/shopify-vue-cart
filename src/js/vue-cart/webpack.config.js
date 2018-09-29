@@ -1,4 +1,3 @@
-/* eslint no-console:"off" */
 const {resolve} = require('path')
 const {getIfUtils} = require('webpack-config-utils')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
@@ -26,14 +25,14 @@ module.exports = env => {
                 },
                 {
                     test: /\.js$/,
-                    loaders: ['babel-loader'],
+                    loader: 'babel-loader',
                     exclude: /node_modules/
                 },
                 {
                     test: /\.css$/,
-                    loaders: ['style-loader', 'css-loader']
+                    loaders: ['vue-style-loader', 'css-loader', 'postcss-loader']
                 },
-            ]
+            ],
         },
         plugins: [
             new VueLoaderPlugin()
@@ -41,13 +40,12 @@ module.exports = env => {
         resolve: {
             alias: {
                 'vue$': 'vue/dist/vue.esm.js'
-                // vue: 'vue/dist/vue.js'
             }
         },
     }
     if (env.debug) {
         console.log(config)
-        debugger // eslint-disable-line
+        debugger
     }
     return config
 }
