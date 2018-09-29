@@ -26,6 +26,7 @@ export default {
     },
     methods: {
         toggleDrawer() {
+            console.log('yoopopp')
             this.isOpen = !this.isOpen
         },
         ...mapActions([

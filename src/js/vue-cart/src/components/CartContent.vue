@@ -1,33 +1,31 @@
 <template>
-    <div v-if="shoppingCart">
-        <div v-if="!emptyCart" class="c-vueCartContent">
-            <div v-for="(item, index) in shoppingCart.items" 
-                :key="index" 
-                class="c-vueCart__row"
-            >
-                <CartItem :item="item"/>
-            </div>
-            <div class="c-vueCart__row">
-                <p class="c-vueCart__subtotal">
-                    Subtotal
-                </p>
-                <span class="c-vueCart__subtotal c-vueCart__subtotal--money">
-                    {{ shoppingCart.total_price | toUSD }}
-                </span>
-            </div>
-            <a class="c-vueCart__checkout" href="/checkout">Checkout</a>
+    <div v-if="cartCount > 0" class="c-vueCartContent">
+        <div v-for="(item, index) in shoppingCart.items" 
+            :key="index" 
+            class="c-vueCart__row"
+        >
+            <CartItem :item="item"/>
         </div>
-        <div v-else class="c-vueCartContent">
-            <p class="c-vueCart__empty">
-                Your cart is currently empty.
+        <div class="c-vueCart__row">
+            <p class="c-vueCart__subtotal">
+                Subtotal
             </p>
+            <span class="c-vueCart__subtotal c-vueCart__subtotal--money">
+                {{ shoppingCart.total | toUSD }}
+            </span>
         </div>
+        <a class="c-vueCart__checkout" href="/checkout">Checkout</a>
+    </div>
+    <div v-else class="c-vueCartContent">
+        <p class="c-vueCart__empty">
+            Your cart is currently empty.
+        </p>
     </div>
 </template>
 
 <script>
 import CartItem from './CartItem.vue'
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
     
 export default {
     name: 'CartContent',
@@ -35,27 +33,19 @@ export default {
         CartItem
     },
     computed: {
-        shoppingCart() {
-            return this.$store.getters.shoppingCart;
-        },
-        emptyCart() {
-            if(this.shoppingCart.items) {
-                if(this.shoppingCart.items.length > 0) {
-                    return false
-                }
-            } else {
-                return false
-            }
-        }
+        ...mapGetters([
+            'shoppingCart',
+            'cartCount'
+        ])
     },
     methods: {
         ...mapActions([
-            'initCart',
-        ]),   
+            'initCart'
+        ])
     },
     mounted() {
         this.initCart()
-    }
+    },
 
 }
 </script>
