@@ -58,7 +58,7 @@ gulp.task('watch', function() {
 });
 ```
 
-#### ADD liquid instructions
+#### TODO: Add liquid instructions
 
 # Development
 
